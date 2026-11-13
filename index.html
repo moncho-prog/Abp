@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Celular e inteligencia artificial | Proyecto ABP</title>
+<meta name="description" content="Proyecto de Aprendizaje Basado en Proyectos sobre cómo el celular y la inteligencia artificial influyen en el estudio, el sueño y los vínculos.">
+<meta name="theme-color" content="#4338ca">
+<link rel="icon" href="logo.png">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<div id="bar" role="presentation"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-focus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14.5a5 5 0 0 1 4.5 5.5"/></symbol>
+<symbol id="i-history" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5M12 7v5l3 2"/></symbol>
+<symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l1-4L16 5l3 3L8 19z"/><path d="M14 7l3 3"/></symbol>
+<symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M6 21h12M5 7h14"/><path d="M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z"/></symbol>
+<symbol id="i-run" viewBox="0 0 24 24"><circle cx="14" cy="4" r="2"/><path d="M5 21l4-7 3 2 2-5-3-2-4 2M14 11l3 3 4-1M9 14l-1 7"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/></symbol>
+<symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+</svg>
+
+<header class="top">
+  <nav aria-label="Principal">
+    <a class="brand" href="#inicio"><img src="logo.png" alt="" width="24" height="24">ABP</a>
+    <div class="links">
+      <a href="#preguntas">Preguntas</a><a href="#impacto">Impacto</a><a href="#materias">Materias</a>
+      <a href="#laboratorio">Laboratorio</a><a href="#juego">Juego</a><a href="#conclusion">Conclusión</a>
+    </div>
+    <button id="theme" class="icon-btn" type="button" aria-label="Cambiar tema"><svg class="ic"><use href="#i-sun"/></svg></button>
+  </nav>
+</header>
+
+<main id="contenido">
+<section class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="tag">Proyecto ABP</span>
+      <h1>Celular e inteligencia artificial: cómo cambian la forma en que estudiamos, dormimos y nos relacionamos</h1>
+      <p class="lead">Una investigación realizada en conjunto para analizar el uso cotidiano de la tecnología, sus beneficios y los riesgos de depender de ella.</p>
+      <div class="cta"><a class="btn" href="#laboratorio">Probar las herramientas</a><a class="btn ghost" href="#preguntas">Ver la investigación</a></div>
+    </div>
+    <svg class="art" viewBox="0 0 320 320" role="img" aria-label="Ilustración de un teléfono con ondas de señal">
+      <circle class="ring r1" cx="160" cy="160" r="70"/><circle class="ring r2" cx="160" cy="160" r="70"/><circle class="ring r3" cx="160" cy="160" r="70"/>
+      <g class="float"><rect x="108" y="48" width="104" height="224" rx="18" fill="#fff" opacity=".95"/><rect x="118" y="66" width="84" height="170" rx="8" fill="#4338ca" opacity=".12"/>
+      <rect x="128" y="80" width="64" height="8" rx="4" fill="#4338ca"/><rect x="128" y="98" width="46" height="6" rx="3" fill="#06b6d4"/>
+      <rect x="128" y="124" width="64" height="34" rx="6" fill="#4338ca" opacity=".25"/><rect x="128" y="166" width="64" height="34" rx="6" fill="#06b6d4" opacity=".35"/>
+      <circle cx="160" cy="254" r="6" fill="#4338ca" opacity=".3"/></g>
+      <g class="chip c1"><rect x="212" y="84" width="76" height="26" rx="13" fill="#fff"/><circle cx="226" cy="97" r="5" fill="#06b6d4"/><rect x="237" y="93" width="40" height="8" rx="4" fill="#4338ca" opacity=".5"/></g>
+      <g class="chip c2"><rect x="30" y="190" width="76" height="26" rx="13" fill="#fff"/><circle cx="44" cy="203" r="5" fill="#4338ca"/><rect x="55" y="199" width="40" height="8" rx="4" fill="#06b6d4" opacity=".6"/></g>
+    </svg>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="stats reveal">
+    <div class="stat"><svg class="ic"><use href="#i-focus"/></svg><b>Atención</b><span>Distracciones y foco</span></div>
+    <div class="stat"><svg class="ic"><use href="#i-moon"/></svg><b>Sueño</b><span>Descanso y rendimiento</span></div>
+    <div class="stat"><svg class="ic"><use href="#i-book"/></svg><b>Estudio</b><span>Aprendizaje con IA</span></div>
+    <div class="stat"><svg class="ic"><use href="#i-users"/></svg><b>Vínculos</b><span>Relaciones y convivencia</span></div>
+  </div>
+
+  <section id="preguntas" class="reveal">
+    <div class="head"><div><h2>Preguntas de investigación</h2><p class="sub">Cada pregunta resume lo que encontramos durante el trabajo.</p></div>
+    <button id="toggleAll" class="btn ghost sm" type="button">Expandir todo</button></div>
+    <div class="acc-list">
+      <div class="acc"><h3><button type="button" aria-expanded="false"><span class="num">1</span>¿Por qué cuesta concentrarse con el celular cerca?<svg class="ic arrow"><use href="#i-up"/></svg></button></h3><div class="panel"><p>Aun sin notificaciones, la sola presencia del teléfono genera el impulso de revisarlo. Una interrupción breve basta para perder el hilo de la tarea. Los videos cortos agravan el efecto: acostumbran al cerebro a estímulos muy rápidos y dificultan sostener la lectura o la atención en clase.</p></div></div>
+      <div class="acc"><h3><button type="button" aria-expanded="false"><span class="num">2</span>¿Las pantallas nos acercan o nos alejan de los demás?<svg class="ic arrow"><use href="#i-up"/></svg></button></h3><div class="panel"><p>Ambas cosas. Facilitan la comunicación inmediata y la organización de grupos de estudio. Pero también reducen la conversación presencial: es frecuente compartir una mesa con todos mirando la pantalla. Aumenta la comunicación escrita y disminuye el contacto cara a cara.</p></div></div>
+      <div class="acc"><h3><button type="button" aria-expanded="false"><span class="num">3</span>¿Por qué se posterga el momento de dormir?<svg class="ic arrow"><use href="#i-up"/></svg></button></h3><div class="panel"><p>El desplazamiento infinito de contenido convierte unos minutos en horas. La consecuencia es doble: se duerme menos y, al día siguiente, disminuyen la atención y el rendimiento escolar.</p></div></div>
+      <div class="acc"><h3><button type="button" aria-expanded="false"><span class="num">4</span>¿La IA fomenta la pasividad o mejora el estudio?<svg class="ic arrow"><use href="#i-up"/></svg></button></h3><div class="panel"><p>Depende del uso. Copiar una respuesta sin leerla no genera aprendizaje. En cambio, pedirle explicaciones alternativas o preguntas de práctica antes de una evaluación puede ser una ayuda muy eficaz.</p></div></div>
+      <div class="acc"><h3><button type="button" aria-expanded="false"><span class="num">5</span>¿Qué riesgos tiene delegar las decisiones en la tecnología?<svg class="ic arrow"><use href="#i-up"/></svg></button></h3><div class="panel"><p>La dependencia. Usar el GPS o pedir textos a la IA en todo momento reduce la práctica de razonar y resolver problemas por cuenta propia. Las herramientas deben complementar el pensamiento, no reemplazarlo.</p></div></div>
+    </div>
+  </section>
+
+  <section id="impacto" class="reveal">
+    <h2>Impacto en el pensamiento, el estudio y los vínculos</h2>
+    <p class="sub">La tecnología aporta mucho, pero conviene conocer sus efectos secundarios.</p>
+    <div class="tabs" role="tablist" aria-label="Áreas de impacto">
+      <button class="tab" role="tab" id="tab1" aria-controls="t1" aria-selected="true">Pensar</button>
+      <button class="tab" role="tab" id="tab2" aria-controls="t2" aria-selected="false" tabindex="-1">Aprender</button>
+      <button class="tab" role="tab" id="tab3" aria-controls="t3" aria-selected="false" tabindex="-1">Relacionarnos</button>
+    </div>
+    <div id="t1" class="box" role="tabpanel" aria-labelledby="tab1"><h3>La forma de pensar</h3><p>Antes se memorizaban datos y se consultaban enciclopedias; hoy todo está a una búsqueda de distancia. Retenemos menos información porque sabemos dónde encontrarla. Además, la acumulación de estímulos vuelve más difícil sostener el foco en una sola actividad.</p></div>
+    <div id="t2" class="box" role="tabpanel" aria-labelledby="tab2" hidden><h3>La forma de aprender</h3><p>Internet y la IA ofrecen explicaciones, resúmenes y ejemplos al instante. Sin embargo, acceder a una respuesta no equivale a comprenderla. Sin razonamiento propio, el conocimiento no se consolida y aparecen dificultades en las evaluaciones.</p></div>
+    <div id="t3" class="box" role="tabpanel" aria-labelledby="tab3" hidden><h3>Los vínculos</h3><p>Cambió el modo de comunicarnos: predominan los audios y los stickers sobre las llamadas, y es habitual ver reuniones donde varias personas miran el teléfono. Las redes conectan, pero no sustituyen una conversación presencial.</p></div>
+  </section>
+
+  <section id="materias" class="reveal">
+    <h2>Conexión con las materias</h2>
+    <p class="sub">El tema se analizó desde distintas áreas del conocimiento.</p>
+    <div class="grid">
+      <article class="card"><svg class="ic"><use href="#i-history"/></svg><h3>Historia</h3><p>Cada invento nuevo, como la radio, la televisión o la computadora, fue acusado de perjudicar al cerebro. Hoy ocurre lo mismo con el celular y la IA. La clave es adaptarse sin perder el foco.</p></article>
+      <article class="card"><svg class="ic"><use href="#i-pen"/></svg><h3>Lengua</h3><p>La escritura rápida del chat afecta la ortografía y la delegación de textos en la IA limita la construcción de ideas propias. Es necesario cuidar la expresión y sostener el hábito de lectura.</p></article>
+      <article class="card"><svg class="ic"><use href="#i-scale"/></svg><h3>Formación Ciudadana</h3><p>Implica convivencia: respeto en entornos virtuales, responsabilidad sobre lo que se publica y verificación de las noticias antes de creerlas o compartirlas.</p></article>
+      <article class="card"><svg class="ic"><use href="#i-run"/></svg><h3>Educación Física</h3><p>Pasar horas sentado frente a una pantalla favorece el sedentarismo y la mala postura. El cuerpo necesita movimiento, deporte y pausas de la tecnología.</p></article>
+    </div>
+  </section>
+
+  <section id="laboratorio" class="reveal">
+    <h2>Laboratorio</h2>
+    <p class="sub">Tres herramientas interactivas para reflexionar sobre el propio uso.</p>
+    <div class="lab">
+      <article class="tool">
+        <h3>Calculadora de tiempo en pantalla</h3>
+        <label for="hours">Horas diarias con el celular: <output id="hoursOut">4</output></label>
+        <input id="hours" type="range" min="0" max="12" step="0.5" value="4">
+        <dl class="res"><div><dt>Horas por año</dt><dd id="rYear">0</dd></div><div><dt>Días completos por año</dt><dd id="rDays">0</dd></div><div><dt>Porcentaje del tiempo despierto</dt><dd id="rPct">0%</dd></div></dl>
+        <p class="note">Cálculo simple, considerando 16 horas de vigilia por día.</p>
+      </article>
+
+      <article class="tool">
+        <h3>Autoevaluación de hábitos</h3>
+        <form id="quiz"></form>
+        <div id="quizOut" class="verdict" aria-live="polite" hidden></div>
+        <p class="note">Es una herramienta orientativa de reflexión, no un diagnóstico.</p>
+      </article>
+
+      <article class="tool">
+        <h3>Temporizador de enfoque</h3>
+        <div class="timer"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="bg" cx="60" cy="60" r="52"/><circle id="tRing" class="fg" cx="60" cy="60" r="52"/></svg><span id="tTime" role="timer">25:00</span></div>
+        <div class="row">
+          <label class="sr" for="tLen">Duración</label>
+          <select id="tLen"><option value="15">15 min</option><option value="25" selected>25 min</option><option value="45">45 min</option></select>
+          <button id="tGo" class="btn sm" type="button">Iniciar</button><button id="tReset" class="btn ghost sm" type="button">Reiniciar</button>
+        </div>
+        <p class="note">Dejá el celular fuera de alcance mientras corre el tiempo.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="juego" class="reveal">
+    <div class="play">
+      <img src="logo.png" alt="Logo utilizado en el juego" width="72" height="72">
+      <div><h2>Juego: Dino vs. ChatGPT</h2><p class="sub">Una forma lúdica de representar la presión constante de las herramientas digitales. Incluye puntaje máximo guardado.</p></div>
+      <a class="btn" href="Dino vs. ChatGPT.html">Jugar</a>
+    </div>
+  </section>
+
+  <section id="conclusion" class="reveal">
+    <h2>Conclusión</h2>
+    <div class="conclusion"><h3>Una conclusión construida en conjunto</h3><p>El celular y la inteligencia artificial no son buenos ni malos por sí mismos: depende del uso que hagamos de ellos. Aprovechar sus ventajas es razonable, siempre que no controlen nuestro tiempo ni reemplacen las ganas de pensar, movernos y conversar con los demás.</p></div>
+  </section>
+</div>
+</main>
+
+<footer><div class="wrap">Proyecto ABP · Celular e inteligencia artificial</div></footer>
+<button id="top" class="fab" type="button" aria-label="Volver arriba" hidden><svg class="ic"><use href="#i-up"/></svg></button>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
