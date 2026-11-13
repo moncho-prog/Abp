@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Celular e IA: ¿cómo nos afectan?</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--text:#1d2333;--muted:#5b6478;--accent:#4f46e5;--accent2:#06b6d4;--line:#e3e6f0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1220;--card:#181c2e;--text:#eef0f8;--muted:#a3aac0;--accent:#8b8cff;--accent2:#22d3ee;--line:#2a3050}}
+:root[data-theme="dark"]{--bg:#0f1220;--card:#181c2e;--text:#eef0f8;--muted:#a3aac0;--accent:#8b8cff;--accent2:#22d3ee;--line:#2a3050}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+#bar{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:20}
+nav{position:sticky;top:0;z-index:10;display:flex;gap:6px;align-items:center;justify-content:center;flex-wrap:wrap;padding:12px;background:var(--card);border-bottom:1px solid var(--line)}
+nav a{color:var(--muted);text-decoration:none;font-size:.9rem;padding:6px 12px;border-radius:99px}
+nav a:hover{background:var(--bg);color:var(--accent)}
+nav button{border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:99px;padding:6px 12px;cursor:pointer;font-size:.9rem}
+header{text-align:center;padding:72px 20px 56px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
+header .tag{display:inline-block;background:rgba(255,255,255,.2);padding:4px 14px;border-radius:99px;font-size:.8rem;letter-spacing:.08em;margin-bottom:16px}
+header h1{margin:0 auto 14px;font-size:clamp(1.9rem,5vw,3.2rem);line-height:1.15;max-width:800px}
+header p{margin:0 auto;max-width:620px;opacity:.95;font-size:1.1rem}
+main{max-width:860px;margin:0 auto;padding:0 18px 60px}
+section{padding-top:56px}
+h2{font-size:1.7rem;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 22px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:-34px;position:relative}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;text-align:center;box-shadow:0 6px 20px rgba(0,0,0,.08)}
+.stat b{display:block;font-size:2rem}
+.stat span{color:var(--muted);font-size:.85rem}
+.acc{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.acc button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:flex;gap:12px;align-items:center;padding:16px 18px;font-weight:600}
+.acc button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.num{flex:none;width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:.9rem}
+.arrow{margin-left:auto;transition:transform .25s;color:var(--muted)}
+.acc.open .arrow{transform:rotate(180deg)}
+.panel{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.panel p{margin:0;padding:0 18px 18px 62px;color:var(--muted)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--text);padding:8px 16px;border-radius:99px;cursor:pointer;font-size:.95rem}
+.tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.box{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:14px;padding:20px 22px}
+.box p{margin:0}
+.box h3{margin:0 0 8px}
+.tabcontent[hidden]{display:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card h3{margin:0 0 6px;font-size:1.05rem;color:var(--accent)}
+.card p{margin:0;color:var(--muted);font-size:.95rem}
+.conclusion{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-radius:18px;padding:26px;margin-top:14px}
+.conclusion h3{margin:0 0 8px}
+.conclusion p{margin:0}
+footer{text-align:center;color:var(--muted);padding:26px 18px;border-top:1px solid var(--line);font-size:.9rem}
+.reveal{opacity:0;transform:translateY(16px);transition:.6s}
+.reveal.show{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media (max-width:520px){.panel p{padding-left:18px}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<nav>
+  <a href="#preguntas">Preguntas</a>
+  <a href="#cambios">Cómo cambian</a>
+  <a href="#materias">Materias</a>
+  <a href="#conclusion">Conclusión</a>
+  <button id="theme" aria-label="Cambiar tema">🌓 Tema</button>
+</nav>
+
+<header>
+  <span class="tag">ABP · PROYECTO</span>
+  <h1>¿Cómo nos afecta el uso excesivo del teléfono y la inteligencia artificial?</h1>
+  <p>Una mirada a cómo el celular y la IA influyen en nuestra concentración, nuestro descanso, nuestro estudio y nuestras relaciones.</p>
+</header>
+
+<main>
+  <div class="stats reveal">
+    <div class="stat"><b>🎯</b><span>Concentración</span></div>
+    <div class="stat"><b>😴</b><span>Descanso</span></div>
+    <div class="stat"><b>📚</b><span>Estudio</span></div>
+    <div class="stat"><b>🤝</b><span>Relaciones</span></div>
+  </div>
+
+  <section id="preguntas" class="reveal">
+    <h2>Preguntas disparadoras</h2>
+    <p class="sub">Tocá cada pregunta para ver la respuesta.</p>
+
+    <div class="acc"><button aria-expanded="false"><span class="num">1</span>¿Cómo afecta el uso del celular a nuestra concentración?<span class="arrow">▾</span></button>
+      <div class="panel"><p>El celular puede dividir nuestra atención incluso cuando no lo estamos usando. Por ejemplo, una simple notificación puede hacernos pensar en revisar el teléfono y perder el hilo de lo que estábamos haciendo. Además, acostumbrarnos a pasar rápidamente de un video a otro puede hacer que nos resulte más difícil mantener la atención en actividades que requieren más tiempo, como estudiar o leer.</p></div></div>
+
+    <div class="acc"><button aria-expanded="false"><span class="num">2</span>¿Cómo afecta la tecnología a nuestras relaciones con otras personas?<span class="arrow">▾</span></button>
+      <div class="panel"><p>La tecnología permite comunicarnos con personas que están lejos y mantener vínculos constantemente. Sin embargo, también puede cambiar la forma en que nos relacionamos. Por ejemplo, podemos tener cientos de contactos en redes sociales pero conversar poco en persona. También puede ocurrir que durante una reunión o una comida prestemos más atención a la pantalla que a quienes tenemos delante.</p></div></div>
+
+    <div class="acc"><button aria-expanded="false"><span class="num">3</span>¿Cómo influye el celular en nuestro descanso y sueño?<span class="arrow">▾</span></button>
+      <div class="panel"><p>Usar el celular antes de dormir puede hacer que nos acostemos más tarde porque seguimos viendo videos, mensajes o redes sociales. Además, las notificaciones pueden interrumpir el descanso. Esto es importante porque dormir bien influye en la memoria, la atención y el estado de ánimo del día siguiente.</p></div></div>
+
+    <div class="acc"><button aria-expanded="false"><span class="num">4</span>¿Cómo afecta la inteligencia artificial a nuestra forma de estudiar?<span class="arrow">▾</span></button>
+      <div class="panel"><p>La IA puede funcionar como una especie de asistente: puede explicar un tema de diferentes maneras, ayudarnos a encontrar errores o generar ejercicios para practicar. Pero también existe el riesgo de copiar una respuesta sin comprenderla. Si dejamos que la IA haga todo nuestro trabajo, podemos terminar aprendiendo menos. Por eso, lo interesante no es solamente usar IA, sino aprender a utilizarla para pensar y aprender mejor.</p></div></div>
+
+    <div class="acc"><button aria-expanded="false"><span class="num">5</span>¿Qué efectos puede tener depender demasiado de la tecnología?<span class="arrow">▾</span></button>
+      <div class="panel"><p>Cuando usamos tecnología para resolver prácticamente todo, podemos perder práctica en algunas habilidades. Por ejemplo, depender siempre del GPS puede hacer que prestemos menos atención a las rutas y lugares que nos rodean. Algo parecido puede pasar con la IA: si siempre le pedimos que escriba, resuelva o piense por nosotros, podemos ejercitar menos nuestras propias capacidades. El desafío es aprovechar la tecnología sin dejar que reemplace completamente nuestras habilidades.</p></div></div>
+  </section>
+
+  <section id="cambios" class="reveal">
+    <h2>¿Cómo están cambiando el celular y la IA nuestra forma de pensar, aprender y relacionarnos?</h2>
+    <p class="sub">Forman parte de nuestra vida cotidiana y nos permiten acceder rápidamente a información, comunicarnos y resolver tareas.</p>
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-t="t1" role="tab">🧠 Pensar</button>
+      <button class="tab" data-t="t2" role="tab">📖 Aprender</button>
+      <button class="tab" data-t="t3" role="tab">💬 Relacionarnos</button>
+    </div>
+    <div id="t1" class="tabcontent box"><h3>Nuestra forma de pensar</h3><p>El celular facilita el acceso a los datos, por lo que ya no necesitamos memorizar tanta información como antes, aunque esto también puede hacer que ejercitemos menos la memoria y la concentración. Además, las notificaciones y las redes sociales pueden generar distracciones y dificultar que mantengamos la atención durante mucho tiempo. La inteligencia artificial también influye porque puede ayudarnos a buscar ideas, explicar temas, resolver problemas y analizar información, pero es importante utilizarla como una herramienta y no dejar que piense por nosotros.</p></div>
+    <div id="t2" class="tabcontent box" hidden><h3>Nuestra forma de aprender</h3><p>Estas tecnologías ofrecen muchas posibilidades: podemos aprender de manera más rápida y personalizada, acceder a diferentes fuentes y pedir explicaciones adaptadas a nuestras necesidades. Sin embargo, obtener una respuesta de una IA no significa necesariamente haber aprendido, por lo que debemos comprender, analizar y comprobar la información por nuestra cuenta.</p></div>
+    <div id="t3" class="tabcontent box" hidden><h3>Nuestras relaciones</h3><p>El celular nos permite comunicarnos de manera inmediata con personas que están lejos y conocer personas con intereses similares, pero también puede provocar que prestemos menos atención a quienes tenemos cerca. La inteligencia artificial agrega nuevas formas de interacción, aunque una conversación con una IA no reemplaza completamente los vínculos humanos.</p></div>
+  </section>
+
+  <section id="materias" class="reveal">
+    <h2>Materias en las que trabajamos</h2>
+    <p class="sub">El tema se conecta con distintas áreas.</p>
+    <div class="grid">
+      <div class="card"><h3>📜 Historia</h3><p>A lo largo de la historia, la tecnología fue cambiando y evolucionando. Antes, las personas se comunicaban mediante cartas, libros y teléfonos antiguos. Hoy contamos con celulares, internet e inteligencia artificial, que facilitan la comunicación y el acceso a la información. Sin embargo, su uso excesivo también puede generar dependencia y hacer que pasemos menos tiempo al aire libre o compartiendo momentos con otras personas.</p></div>
+      <div class="card"><h3>✍️ Lengua</h3><p>El uso excesivo del celular y la IA puede influir en nuestra forma de leer, escribir y comunicarnos. Muchas veces utilizamos abreviaciones, escribimos con errores o dependemos de la IA para realizar tareas sin pensar por nuestra cuenta. Es importante desarrollar nuestra comprensión lectora, aprender nuevas palabras y expresar nuestras propias ideas. La IA puede ayudarnos a estudiar, pero no debe reemplazar nuestro aprendizaje.</p></div>
+      <div class="card"><h3>⚖️ CDC</h3><p>El uso excesivo del teléfono y la IA se relaciona con la convivencia y la responsabilidad en la sociedad. Es importante respetar a los demás, cuidar nuestra privacidad y no compartir información falsa. También debemos aprender a comunicarnos personalmente, escuchar diferentes opiniones y no depender de la tecnología para resolver todos nuestros problemas. Usarla responsablemente nos permite aprovechar sus beneficios sin perjudicar nuestras relaciones sociales ni nuestra vida cotidiana.</p></div>
+      <div class="card"><h3>🏃 Educación Física</h3><p>El uso excesivo del teléfono y la IA puede perjudicar nuestra salud porque pasamos mucho tiempo sentados, nos movemos menos y podemos tener problemas de postura, sueño y concentración. Por eso es importante mantenernos activos, practicar deportes y cuidar nuestro cuerpo. La tecnología también puede ser útil para aprender ejercicios y mejorar nuestro rendimiento, pero debemos usarla con responsabilidad y encontrar un equilibrio entre las pantallas y la actividad física.</p></div>
+    </div>
+  </section>
+
+  <section id="conclusion" class="reveal">
+    <h2>Conclusión</h2>
+    <div class="conclusion">
+      <h3>Todo depende de cómo los usemos</h3>
+      <p>El celular y la inteligencia artificial ofrecen grandes beneficios, pero también presentan desafíos. Su impacto depende principalmente de cómo los utilicemos: pueden ayudarnos a aprender, comunicarnos y desarrollar nuevas capacidades, siempre que no permitamos que reemplacen nuestra capacidad de pensar, concentrarnos y relacionarnos con los demás.</p>
+    </div>
+  </section>
+</main>
+
+<footer>Proyecto ABP · Celular e Inteligencia Artificial</footer>
+
+<script>
+// Acordeón
+document.querySelectorAll('.acc').forEach(function(acc){
+  var btn = acc.querySelector('button'), panel = acc.querySelector('.panel');
+  btn.addEventListener('click', function(){
+    var open = acc.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+    panel.style.maxHeight = open ? panel.scrollHeight + 'px' : 0;
+  });
+});
+
+// Pestañas
+document.querySelectorAll('.tab').forEach(function(tab){
+  tab.addEventListener('click', function(){
+    document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+    document.querySelectorAll('.tabcontent').forEach(function(c){ c.hidden = true; });
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.t).hidden = false;
+  });
+});
+
+// Barra de progreso
+var bar = document.getElementById('bar');
+window.addEventListener('scroll', function(){
+  var h = document.documentElement.scrollHeight - window.innerHeight;
+  bar.style.width = (h > 0 ? window.scrollY / h * 100 : 0) + '%';
+});
+
+// Aparición al hacer scroll
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } });
+}, {threshold: .1});
+document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+// Tema claro/oscuro
+document.getElementById('theme').addEventListener('click', function(){
+  var root = document.documentElement;
+  var dark = root.dataset.theme ? root.dataset.theme === 'dark'
+    : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme = dark ? 'light' : 'dark';
+});
+</script>
+</body>
+</html>
